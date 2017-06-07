@@ -67,7 +67,7 @@ module.exports = [
         email: 'changjef@umich.edu',
         phone: '2222222222',
         address: _.find(address, { 'id': 1 }),
-        profile_pic: "http://localhost:8080/static/1.jpg",
+        profile_pic: "http://54.174.101.197:8080/static/1.jpg",
         role: 'consumer'
     },
     {
@@ -76,7 +76,7 @@ module.exports = [
         email: 'paulsemail@service.com',
         phone: '1111111111',
         address: _.find(address, { 'id': 2 }),
-        profile_pic: "http://localhost:8080/static/2.jpg",
+        profile_pic: "http://54.174.101.197:8080/static/2.jpg",
         role: 'pro'
     },
     {
@@ -85,7 +85,7 @@ module.exports = [
         email: 'potter.harry@hogwarts.edu',
         phone: '1234567890',
         address: _.find(address, { 'id': 3 }),
-        profile_pic: "http://localhost:8080/static/3.jpg",
+        profile_pic: "http://54.174.101.197:8080/static/3.jpg",
         role: 'consumer'
     },
     {
@@ -94,7 +94,7 @@ module.exports = [
         email: 'granger.hermione@hogwarts.edu',
         phone: '1111111111',
         address: _.find(address, { 'id': 4 }),
-        profile_pic: "http://localhost:8080/static/4.jpg",
+        profile_pic: "http://54.174.101.197:8080/static/4.jpg",
         role: 'consumer'
     },
     {
@@ -103,7 +103,7 @@ module.exports = [
         email: 'weasley.ron@hogwarts.edu',
         phone: '1111111111',
         address: _.find(address, { 'id': 5 }),
-        profile_pic: "http://localhost:8080/static/5.jpg",
+        profile_pic: "http://54.174.101.197:8080/static/5.jpg",
         role: 'consumer'
     },
     {
@@ -112,7 +112,7 @@ module.exports = [
         email: 'malfoy.draco@hogwarts.edu',
         phone: '1111111111',
         address: _.find(address, { 'id': 6 }),
-        profile_pic: "http://localhost:8080/static/6.jpg",
+        profile_pic: "http://54.174.101.197:8080/static/6.jpg",
         role: 'pro'
     },
     {
@@ -121,7 +121,7 @@ module.exports = [
         email: 'dumbledore.albus@hogwarts.edu',
         phone: '1111111111',
         address: _.find(address, { 'id': 7 }),
-        profile_pic: "http://localhost:8080/static/7.jpg",
+        profile_pic: "http://54.174.101.197:8080/static/7.jpg",
         role: 'consumer'
     },
 

@@ -45,10 +45,10 @@ public class UserAdapter extends RecyclerView.Adapter<UserViewHolder> {
         userViewHolder.roleTextView.setText(String.format("%s%s", role.substring(0,1).toUpperCase(), role.substring(1)));
         Toast.makeText(mContext, currentUser.getProfilePic(), Toast.LENGTH_SHORT).show();
 //        mCallback = (MainActivity) mContext;
-//        Picasso.with(mContext)
-//                .load(currentUser.)
-//                .placeholder(R.color.colorAccent)
-//                .into(holder.imageView);
+        Picasso.with(mContext)
+                .load(currentUser.getProfilePic())
+                .placeholder(R.color.colorAccent)
+                .into(userViewHolder.userImageView);
 //        mCallback.getUserPhotoResource(currentUser.getId());
         //        userViewHolder.userImageView
     }

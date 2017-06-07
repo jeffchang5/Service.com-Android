@@ -23,7 +23,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RestClient {
     // 54.174.101.197
-    private final String BASE_URL = "http://10.0.2.2:8080/users/";
+    private final String BASE_URL = "http://ec2-54-174-101-197.compute-1.amazonaws.com:8080/users/";
     private final UserService mUserService;
 
     private RestClient() {
