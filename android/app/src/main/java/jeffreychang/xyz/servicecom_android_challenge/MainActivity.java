@@ -8,9 +8,15 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
+import jeffreychang.xyz.servicecom_android_challenge.models.Photo;
+import jeffreychang.xyz.servicecom_android_challenge.network.RestClient;
+import jeffreychang.xyz.servicecom_android_challenge.network.BaseCallback;
 import jeffreychang.xyz.servicecom_android_challenge.ui.common.BaseActivity;
+import jeffreychang.xyz.servicecom_android_challenge.ui.users.UserAdapter;
 import jeffreychang.xyz.servicecom_android_challenge.ui.users.UserFragment;
+import okhttp3.Request;
 
 
 public class MainActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -38,7 +44,6 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     }
 
     @Override
-
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
@@ -71,6 +76,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         switch (menuItem.getItemId()) {
             case R.id.nav_users: switchFragments(UserFragment.getInstance());
         }
+        mDrawerLayout.closeDrawers();
         return true;
     }
 

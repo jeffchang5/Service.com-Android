@@ -31,6 +31,9 @@ public class User {
     @SerializedName("address")
     @Expose
     private Address address;
+    @SerializedName("profile_pic")
+    @Expose
+    private String profilePic;
     @SerializedName("role")
     @Expose
     private String role;
@@ -83,4 +86,11 @@ public class User {
         this.role = role;
     }
 
+    public String getProfilePic() {
+        return profilePic;
+    }
+
+    public void setProfilePic(String profilePic) {
+        this.profilePic = profilePic;
+    }
 }

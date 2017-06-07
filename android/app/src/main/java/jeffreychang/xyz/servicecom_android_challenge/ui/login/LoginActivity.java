@@ -11,7 +11,7 @@ import android.widget.Toast;
 import jeffreychang.xyz.servicecom_android_challenge.MainActivity;
 import jeffreychang.xyz.servicecom_android_challenge.R;
 import jeffreychang.xyz.servicecom_android_challenge.models.User;
-import jeffreychang.xyz.servicecom_android_challenge.network.LoginCallback;
+import jeffreychang.xyz.servicecom_android_challenge.network.BaseCallback;
 import jeffreychang.xyz.servicecom_android_challenge.network.RestClient;
 import jeffreychang.xyz.servicecom_android_challenge.ui.common.BaseActivity;
 
@@ -65,7 +65,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
 
     private void attemptLogin() {
         if (isEmailValid(mUsernameEditText.getText().toString()) && isPasswordValid(mPasswordEditText.getText().toString())) {
-            RestClient.getInstance().login(mUsernameEditText.getText().toString(), new LoginCallback<User>() {
+            RestClient.getInstance().login(mUsernameEditText.getText().toString(), new BaseCallback<User>() {
                 @Override
                 public void success(User response) {
                     storeUser(response);

@@ -38,17 +38,22 @@ router.post('/login', urlencodedParser, (req, res) => {
 });
 // Responds with the URL for the image for the specific user
 
-router.get('/photos', (req, res) => {
+// router.get('/photos', (req, res) => {
 
-    const imageURL = url.format({
-                protocol: req.protocol,
-                host: req.get('host'),
-    });
+//     const imageURL = url.format({
+//                 protocol: req.protocol,
+//                 host: req.get('host'),
+//     });
 
-    if (Object.keys(req.query).length > 0) {
-        res.send(`${imageURL}/static/${req.query.id}.jpg`);
-    } else {
-        res.send('No query for id was sent.');
-    }
+//     if (Object.keys(req.query).length > 0) {
+//         res.send({url: `${imageURL}/static/${req.query.id}.jpg` });
+//     } else {
+//         res.send('No query for id was sent.');
+//     }
+// })
+
+router.get('/all', (req, res) => {
+    res.send(data);
 })
+
 module.exports = router;

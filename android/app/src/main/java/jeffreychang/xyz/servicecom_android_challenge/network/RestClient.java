@@ -5,6 +5,9 @@ import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import java.util.List;
+
+import jeffreychang.xyz.servicecom_android_challenge.models.Photo;
 import jeffreychang.xyz.servicecom_android_challenge.models.User;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -19,8 +22,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 
 public class RestClient {
-    private final String BASE_URL = "http://54.174.101.197:8080/users/";
-    private final LoginService mNetworkService;
+    // 54.174.101.197
+    private final String BASE_URL = "http://10.0.2.2:8080/users/";
+    private final UserService mUserService;
 
     private RestClient() {
         final Gson gson = new GsonBuilder()
@@ -34,33 +38,58 @@ public class RestClient {
                 .addInterceptor(interceptor)
                 .addInterceptor(new StethoInterceptor())
                 .build();
-
         final Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .client(client)
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
-        mNetworkService = retrofit.create(LoginService.class);
+        mUserService = retrofit.create(UserService.class);
 
     }
     public static RestClient getInstance() {
         return new RestClient();
     }
-    public void login(String username, final LoginCallback<User> callback) {
-        mNetworkService.loginWithUserInformation(username)
+
+    public void login(String username, final BaseCallback<User> callback) {
+        mUserService.loginWithUserInformation(username)
                 .enqueue(new Callback<User>() {
                     @Override
-                    public void onResponse(Call<User> call, Response<User> response) {
-                        callback.success(response.body());
-
-                    }
+                    public void onResponse(Call<User> call, Response<User> response) { callback.success(response.body()); }
 
                     @Override
                     public void onFailure(Call<User> call, Throwable t) {
                         callback.failure(t);
                     }
                 });
+    }
+    public void getAllUsers(final BaseCallback<List<User>> callback) {
+        mUserService.getAllUserInformation()
+                .enqueue(new Callback<List<User>>() {
+                    @Override
+                    public void onResponse(Call<List<User>> call, Response<List<User>> response) { callback.success(response.body()); }
 
+                    @Override
+                    public void onFailure(Call<List<User>> call, Throwable t) { callback.failure(t); }
+                });
+    }
+    public void getPhotoResource(int id, final BaseCallback<Photo> callback) {
+        mUserService.getPhotoResource(id)
+                .enqueue(new Callback<Photo>() {
+                    @Override
+                    public void onResponse(Call<Photo> call, Response<Photo> response) { callback.success(response.body()); }
 
+                    @Override
+                    public void onFailure(Call<Photo> call, Throwable t) { callback.failure(t); }
+                });
+    }
+    public void fetchPhotoImage(String url, final BaseCallback<Photo> callback) {
+        mUserService.fetchPhotoImage(url)
+                .enqueue(new Callback<Photo>() {
+                    @Override
+                    public void onResponse(Call<Photo> call, Response<Photo> response) { callback.success(response.body()); }
+
+                    @Override
+                    public void onFailure(Call<Photo> call, Throwable t) { callback.failure(t); }
+                });
     }
 }
