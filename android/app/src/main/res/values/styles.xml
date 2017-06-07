@@ -1,0 +1,44 @@
+<resources>
+
+    <!--Global themes-->
+
+    <style name="ServiceTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="android:textColorSecondary">@color/white</item>
+    </style>
+
+    <style name="ServiceTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="ServiceTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name=".PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <!-- Styles for the Login Activity -->
+    <style name="Service.TextInputLayout" parent="Widget.Design.TextInputLayout">
+        <item name="colorAccent">@android:color/white</item>
+        <item name="android:textColorHint">@color/white</item>
+        <item name="colorControlNormal">@color/white</item>
+        <item name="colorControlActivated">@color/white</item>
+        <item name="colorControlHighlight">@color/white</item>
+    </style>
+    <style name="Service.TextInputLayout.Error" parent="Widget.Design.TextInputLayout">
+        <item name="android:textColor">@color/pink_400</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="Service.TextInputLayout.Text" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textColorHint">@color/white</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+
+
+
+</resources>
