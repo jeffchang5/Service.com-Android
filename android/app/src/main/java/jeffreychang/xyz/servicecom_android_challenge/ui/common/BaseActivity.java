@@ -31,14 +31,17 @@ public abstract class BaseActivity extends AppCompatActivity{
         mPrefs = PreferenceManager.getDefaultSharedPreferences(this);
     }
 
-    public void checkUser() {
-        Toast.makeText(getApplicationContext(), mPrefs.getString(User.EMAIL, "address"), Toast.LENGTH_SHORT).show();
-
+    public boolean checkUser() {
         if (mPrefs.contains(User.EMAIL)) {
             Toast.makeText(getApplicationContext(), "Already logged in!", Toast.LENGTH_SHORT).show();
+            return true;
         } else {
             goToLoginActivity();
+            return false;
         }
+    }
+    public String getName() {
+        return  mPrefs.getString(User.NAME, "name");
     }
     public void storeUser(User user) {
 
@@ -62,18 +65,4 @@ public abstract class BaseActivity extends AppCompatActivity{
         startActivity(intent);
         finish();
     }
-
-
-    @TargetApi(21)
-    public void changeColorTheme(int id) {
-        int color = ContextCompat.getColor(this, id);
-        assert getSupportActionBar() != null;
-        getSupportActionBar().setBackgroundDrawable(
-                new ColorDrawable(color));
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            getWindow().setStatusBarColor(color);
-        }
-    }
-
-
 }

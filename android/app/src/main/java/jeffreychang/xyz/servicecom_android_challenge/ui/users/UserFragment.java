@@ -2,6 +2,7 @@ package jeffreychang.xyz.servicecom_android_challenge.ui.users;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -65,7 +66,7 @@ public class UserFragment extends BaseFragment {
     @Override
     public void onResume() {
         super.onResume();
-        ((MainActivity) getActivity()).changeColorTheme(R.color.colorPrimary);
+        ((MainActivity) getActivity()).changeColorTheme(ContextCompat.getColor(getContext(), R.color.colorPrimary));
     }
 
     public static UserFragment newInstance() {

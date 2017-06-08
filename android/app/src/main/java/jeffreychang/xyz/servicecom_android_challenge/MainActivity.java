@@ -1,14 +1,20 @@
 package jeffreychang.xyz.servicecom_android_challenge;
 
+import android.annotation.TargetApi;
+import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import jeffreychang.xyz.servicecom_android_challenge.models.User;
@@ -26,12 +32,21 @@ public class MainActivity extends BaseActivity implements
     private ActionBarDrawerToggle mActionToggle;
     private DrawerLayout mDrawerLayout;
     private Toolbar mToolbar;
+    private NavigationView mNavigationView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        checkUser();
+
+        mNavigationView = (NavigationView) findViewById(R.id.nav_view);
+        mNavigationView.setNavigationItemSelectedListener(this);
+
+        if (checkUser()) {
+            ((TextView) mNavigationView.getHeaderView(0).findViewById(R.id.header_name))
+                    .setText(getName());
+
+        };
 
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
@@ -40,8 +55,7 @@ public class MainActivity extends BaseActivity implements
         mActionToggle = createActionToggle();
         mDrawerLayout.addDrawerListener(mActionToggle);
 
-        NavigationView mNavigationView = (NavigationView) findViewById(R.id.nav_view);
-        mNavigationView.setNavigationItemSelectedListener(this);
+
 
     }
 
@@ -96,12 +110,24 @@ public class MainActivity extends BaseActivity implements
     }
 
     public void startDetailFragment(User user) {
-        Toast.makeText(this, user.getName(), Toast.LENGTH_SHORT).show();
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.fragment_container, DetailFragment.newInstance())
+                .replace(R.id.fragment_container, DetailFragment.newInstance(user))
                 .addToBackStack("DETAIL")
                 .commit();
+    }
+
+    @TargetApi(21)
+    public void changeColorTheme(int color) {
+        assert getSupportActionBar() != null;
+        mNavigationView.getHeaderView(0).setBackgroundColor(color);
+        getSupportActionBar().setBackgroundDrawable(
+                new ColorDrawable(color));
+
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            getWindow().setStatusBarColor(color);
+        }
     }
 
 

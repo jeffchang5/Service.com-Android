@@ -11,4 +11,8 @@
     <!--Material Colors-->
     <color name="pink_400">#EC407A</color>
     <color name="black">#000</color>
+    <color name="grey_400">#BDBDBD</color>
+    <color name="grey_900">#212121</color>
+    <color name="material_yellow">#FFC107</color>
+
 </resources>

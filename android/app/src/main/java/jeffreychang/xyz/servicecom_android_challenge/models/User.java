@@ -15,6 +15,7 @@ public class User {
     public static final String PHONE = "PHONE";
     public static final String ADDRESS = "ADDRESS";
     public static final String ROLE = "ROLE";
+    public static final String PROFILE_PIC = "PROFILE_PIC";
 
     @SerializedName("id")
     @Expose
