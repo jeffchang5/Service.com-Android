@@ -1,10 +1,17 @@
 package jeffreychang.xyz.servicecom_android_challenge.ui.common;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
@@ -55,4 +62,18 @@ public abstract class BaseActivity extends AppCompatActivity{
         startActivity(intent);
         finish();
     }
+
+
+    @TargetApi(21)
+    public void changeColorTheme(int id) {
+        int color = ContextCompat.getColor(this, id);
+        assert getSupportActionBar() != null;
+        getSupportActionBar().setBackgroundDrawable(
+                new ColorDrawable(color));
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            getWindow().setStatusBarColor(color);
+        }
+    }
+
+
 }

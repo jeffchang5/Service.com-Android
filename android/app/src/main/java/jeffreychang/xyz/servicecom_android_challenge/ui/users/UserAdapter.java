@@ -3,14 +3,15 @@ package jeffreychang.xyz.servicecom_android_challenge.ui.users;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-import jeffreychang.xyz.servicecom_android_challenge.MainActivity;
 import jeffreychang.xyz.servicecom_android_challenge.R;
 import jeffreychang.xyz.servicecom_android_challenge.models.User;
 
@@ -20,12 +21,9 @@ import jeffreychang.xyz.servicecom_android_challenge.models.User;
 
 public class UserAdapter extends RecyclerView.Adapter<UserViewHolder> {
     private final Context mContext;
-    private ArrayList<User> mUserList;
-    private OnDataBindListener mCallback;
 
-    public interface OnDataBindListener {
-        void getUserPhotoResource(int id);
-    }
+    private ArrayList<User> mUserList;
+
 
 
     UserAdapter(Context context, ArrayList<User> list) {
@@ -34,23 +32,20 @@ public class UserAdapter extends RecyclerView.Adapter<UserViewHolder> {
     }
     @Override
     public UserViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-        return new UserViewHolder(LayoutInflater.from(mContext).inflate(R.layout.viewholder_users, viewGroup, false));
+        UserViewHolder userViewHolder = new UserViewHolder(mContext,
+                LayoutInflater.from(mContext).inflate(R.layout.viewholder_users, viewGroup, false));
+
+        return userViewHolder;
     }
 
     @Override
     public void onBindViewHolder(UserViewHolder userViewHolder, int i) {
         User currentUser = mUserList.get(i);
-        String role = currentUser.getRole();
-        userViewHolder.nameTextView.setText(currentUser.getName());
-        userViewHolder.roleTextView.setText(String.format("%s%s", role.substring(0,1).toUpperCase(), role.substring(1)));
-        Toast.makeText(mContext, currentUser.getProfilePic(), Toast.LENGTH_SHORT).show();
-//        mCallback = (MainActivity) mContext;
+        userViewHolder.bindUser(currentUser);
         Picasso.with(mContext)
                 .load(currentUser.getProfilePic())
                 .placeholder(R.color.colorAccent)
                 .into(userViewHolder.userImageView);
-//        mCallback.getUserPhotoResource(currentUser.getId());
-        //        userViewHolder.userImageView
     }
 
     @Override

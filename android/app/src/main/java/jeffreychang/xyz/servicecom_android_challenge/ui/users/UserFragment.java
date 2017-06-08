@@ -13,10 +13,12 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+import jeffreychang.xyz.servicecom_android_challenge.MainActivity;
 import jeffreychang.xyz.servicecom_android_challenge.R;
 import jeffreychang.xyz.servicecom_android_challenge.models.User;
 import jeffreychang.xyz.servicecom_android_challenge.network.RestClient;
 import jeffreychang.xyz.servicecom_android_challenge.network.BaseCallback;
+import jeffreychang.xyz.servicecom_android_challenge.ui.common.BaseFragment;
 
 /**
  * Created by chang on 6/6/2017.
@@ -60,7 +62,13 @@ public class UserFragment extends BaseFragment {
         return view;
     }
 
-    public static UserFragment getInstance() {
+    @Override
+    public void onResume() {
+        super.onResume();
+        ((MainActivity) getActivity()).changeColorTheme(R.color.colorPrimary);
+    }
+
+    public static UserFragment newInstance() {
         return new UserFragment();
     }
     public void loadAllUsers() {

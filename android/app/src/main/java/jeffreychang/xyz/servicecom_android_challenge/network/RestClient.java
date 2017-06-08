@@ -71,25 +71,6 @@ public class RestClient {
                     @Override
                     public void onFailure(Call<List<User>> call, Throwable t) { callback.failure(t); }
                 });
-    }
-    public void getPhotoResource(int id, final BaseCallback<Photo> callback) {
-        mUserService.getPhotoResource(id)
-                .enqueue(new Callback<Photo>() {
-                    @Override
-                    public void onResponse(Call<Photo> call, Response<Photo> response) { callback.success(response.body()); }
 
-                    @Override
-                    public void onFailure(Call<Photo> call, Throwable t) { callback.failure(t); }
-                });
-    }
-    public void fetchPhotoImage(String url, final BaseCallback<Photo> callback) {
-        mUserService.fetchPhotoImage(url)
-                .enqueue(new Callback<Photo>() {
-                    @Override
-                    public void onResponse(Call<Photo> call, Response<Photo> response) { callback.success(response.body()); }
-
-                    @Override
-                    public void onFailure(Call<Photo> call, Throwable t) { callback.failure(t); }
-                });
     }
 }
